@@ -2,5 +2,7 @@
 
 body{
     font-family: 'Ubuntu', sans-serif;
-    
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
 }
