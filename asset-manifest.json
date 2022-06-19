@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.js": "/dz-dev-discord-assigment1-solution/static/js/main.39c48e5f.js",
+    "main.css": "/dz-dev-discord-assigment1-solution/static/css/main.039bf95e.css",
+    "main.js": "/dz-dev-discord-assigment1-solution/static/js/main.32dbd8db.js",
     "index.html": "/dz-dev-discord-assigment1-solution/index.html",
-    "main.39c48e5f.js.map": "/dz-dev-discord-assigment1-solution/static/js/main.39c48e5f.js.map"
+    "main.039bf95e.css.map": "/dz-dev-discord-assigment1-solution/static/css/main.039bf95e.css.map",
+    "main.32dbd8db.js.map": "/dz-dev-discord-assigment1-solution/static/js/main.32dbd8db.js.map"
   },
   "entrypoints": [
-    "static/js/main.39c48e5f.js"
+    "static/css/main.039bf95e.css",
+    "static/js/main.32dbd8db.js"
   ]
 }
