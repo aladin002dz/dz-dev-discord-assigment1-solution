@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import userItemsService from "./userService";
 const initialState = {
-  useritems: [],
+  userItems: [],
   isLoading: false,
   isSuccess: false,
   isError: false,
@@ -27,12 +27,27 @@ export const getUserItems = createAsyncThunk(
 );
 
 const userItemsSlice = createSlice({
-  name: "useritems",
+  name: "userItems",
   initialState,
   reducers: {
     reset: (state) => initialState,
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getUserItems.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getUserItems.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.userItems = action.payload;
+      })
+      .addCase(getUserItems.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      });
+  },
 });
-
 export const { reset } = userItemsSlice.actions;
 export default userItemsSlice.reducer;
