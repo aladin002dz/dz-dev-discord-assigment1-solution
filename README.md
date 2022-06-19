@@ -1,3 +1,11 @@
+# Solving the following assignment
+
+https://github.com/chemiadel/dz-dev-discord-assigment1
+
+# Discussion on Discord
+
+https://discord.com/channels/872911824822095912/984646724511494215/987391039537049671
+
 # Getting Started with Create React App and Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
