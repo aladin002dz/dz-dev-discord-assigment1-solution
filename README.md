@@ -2,6 +2,10 @@
 
 https://github.com/chemiadel/dz-dev-discord-assigment1
 
+# Live preview of the solution
+
+https://aladin002dz.github.io/dz-dev-discord-assigment1-solution/
+
 # Discussion on Discord
 
 https://discord.com/channels/872911824822095912/984646724511494215/987391039537049671
