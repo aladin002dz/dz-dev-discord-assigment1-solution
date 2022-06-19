@@ -2,7 +2,7 @@
   "name": "dz-dev-discord-assignment1-solution",
   "version": "0.1.0",
   "proxy": "https://dz-dev-discord-assigment1-api.herokuapp.com",
-  "homepage": ".",
+  "homepage": "https://aladin002dz.github.io/dz-dev-discord-assigment1-solution/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
@@ -21,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -40,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
