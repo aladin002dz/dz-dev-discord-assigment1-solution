@@ -18,20 +18,37 @@ export default function Dashboard() {
     return () => {
       dispatch(reset());
     };
-    console.log("inside dashboard");
-    console.log(userItems);
   }, [isError, message, dispatch]);
   return (
     <>
       <h1>Dashboard</h1>
-      <p>
-        {/*         {userItems.map((userItem) => (
-          <div key={userItem.id}>
-            <h3>{userItem.name}</h3>
-          </div>
-        ))} */}
-        {JSON.stringify(userItems)}
-      </p>
+      <hr className="my-4"></hr>
+      {isLoading ? (
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      ) : (
+        <table class="table">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Username</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {userItems.map((userItem) => (
+              <tr key={userItem.id}>
+                <th scope="row">{userItem.id}</th>
+                <td>{userItem.name}</td>
+                <td>{userItem.username}</td>
+                <td>{userItem.email}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </>
   );
 }

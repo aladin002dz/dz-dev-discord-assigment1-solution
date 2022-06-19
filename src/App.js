@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 function App() {
   return (
     <>
       <Router>
-        <div className="container">
+        <div className="container border rounded mx-auto my-3 p-3">
           <Routes>
             <Route path="/" element={<Dashboard />} />
           </Routes>

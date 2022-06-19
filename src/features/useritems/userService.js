@@ -1,6 +1,9 @@
 import axios from "axios";
 
+//for development, using proxy from the package.json file
 const API_URL = "/data";
+//for production
+//const API_URL = "https://dz-dev-discord-assigment1-api.herokuapp.com/data";
 let token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 
