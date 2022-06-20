@@ -50,11 +50,11 @@ export default function Login() {
 
   return (
     <form onSubmit={onSubmit}>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+      <div className="form-group">
+        <label htmlFor="exampleInputEmail1">Email address</label>
         <input
           type="email"
-          class="form-control"
+          className="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           placeholder="Enter email"
@@ -62,15 +62,15 @@ export default function Login() {
           value={email}
           onChange={onChange}
         ></input>
-        <small id="emailHelp" class="form-text text-muted">
+        <small id="emailHelp" className="form-text text-muted">
           We'll never share your email with anyone else.
         </small>
       </div>
-      <div class="form-group mb-3">
-        <label for="exampleInputPassword1">Password</label>
+      <div className="form-group mb-3">
+        <label htmlFor="exampleInputPassword1">Password</label>
         <input
           type="password"
-          class="form-control"
+          className="form-control"
           id="exampleInputPassword1"
           placeholder="Password"
           name="password"
@@ -78,7 +78,7 @@ export default function Login() {
           onChange={onChange}
         />
       </div>
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" className="btn btn-primary">
         Submit
       </button>
     </form>

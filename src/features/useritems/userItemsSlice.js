@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import userItemsService from "./userService";
+
 const initialState = {
   userItems: [],
   isLoading: false,
@@ -15,6 +16,25 @@ export const getUserItems = createAsyncThunk(
     try {
       const token = thunkAPI.getState().auth.user.token;
       return await userItemsService.getUserItems(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Delete user goal
+export const deleteUserItem = createAsyncThunk(
+  "userItems/delete",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await userItemsService.deleteGoal(id, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -44,6 +64,21 @@ const userItemsSlice = createSlice({
         state.userItems = action.payload;
       })
       .addCase(getUserItems.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(deleteUserItem.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteUserItem.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.userItems = state.userItems.filter(
+          (userItem) => userItem.id !== action.payload.id
+        );
+      })
+      .addCase(deleteUserItem.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
