@@ -14,8 +14,8 @@ const getUserItems = async (token) => {
     },
   };
   const response = await axios.get(API_URL, config);
-  console.log("Response date get all users:");
-  console.log(response.data);
+  //console.log("Response date get all users:");
+  //console.log(response.data);
   return response.data;
 };
 
@@ -27,8 +27,9 @@ const deleteUserItem = async (userItemId, token) => {
     },
   };
 
-  const response = await axios.delete(API_URL + userItemId, config);
-
+  const response = await axios.delete(API_URL + "/" + userItemId, config);
+  console.log("Response date delete user item:");
+  console.log(response.data);
   return response.data;
 };
 

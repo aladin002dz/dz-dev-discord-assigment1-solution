@@ -34,7 +34,7 @@ export const deleteUserItem = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await userItemsService.deleteGoal(id, token);
+      return await userItemsService.deleteUserItem(id, token);
     } catch (error) {
       const message =
         (error.response &&

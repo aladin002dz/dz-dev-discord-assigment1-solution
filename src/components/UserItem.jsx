@@ -19,7 +19,7 @@ export default function UserItem({ userItem }) {
         <button
           type="button"
           className="btn btn-danger"
-          /* onClick={() => dispatch(deleteUserItem(userItem.id))} */
+          onClick={() => dispatch(deleteUserItem(userItem.id))}
         >
           Delete
         </button>
