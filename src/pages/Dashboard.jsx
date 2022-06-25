@@ -1,11 +1,17 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getUserItems, reset } from "../features/useritems/userItemsSlice";
+import {
+  getUserItems,
+  reset,
+  deleteUserItem,
+} from "../features/useritems/userItemsSlice";
 
 import UserItem from "../components/UserItem";
+import DeleteConfirmation from "../components/DeleteConfirmation";
 
 export default function Dashboard() {
+  const [currUserId, setCurrUserId] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -13,6 +19,19 @@ export default function Dashboard() {
   const { userItems, isLoading, isError, message } = useSelector(
     (state) => state.userItems
   );
+
+  const showDeleteConfirmation = (userItemId) => {
+    setCurrUserId(userItemId);
+    console.log("clicking delete button");
+    document.getElementById("backdrop").style.display = "block";
+    document.getElementById("myModal").style.display = "block";
+    document.getElementById("myModal").classList.add("show");
+  };
+  const deleteConfirmed = (id) => {
+    console.log("delete confirmeed");
+    console.log(id);
+    dispatch(deleteUserItem(id));
+  };
 
   useEffect(() => {
     if (isError) {
@@ -29,6 +48,7 @@ export default function Dashboard() {
       dispatch(reset());
     };
   }, [isError, message, dispatch]);
+
   return (
     <>
       <h1>Dashboard</h1>
@@ -38,23 +58,33 @@ export default function Dashboard() {
           <span className="visually-hidden">Loading...</span>
         </div>
       ) : (
-        <table className="table">
-          <thead className="table-light">
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col">Name</th>
-              <th scope="col">Username</th>
-              <th scope="col">Email</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {userItems.map((userItem) => (
-              <UserItem key={userItem.id} userItem={userItem} />
-            ))}
-          </tbody>
-        </table>
+        <>
+          <table className="table">
+            <thead className="table-light">
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {userItems.map((userItem) => (
+                <UserItem
+                  key={userItem.id}
+                  userItem={userItem}
+                  showDeleteConfirmation={showDeleteConfirmation}
+                />
+              ))}
+            </tbody>
+          </table>
+          <DeleteConfirmation
+            runDelete={deleteConfirmed}
+            currUserId={currUserId}
+          />
+        </>
       )}
     </>
   );

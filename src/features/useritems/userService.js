@@ -30,7 +30,8 @@ const deleteUserItem = async (userItemId, token) => {
   const response = await axios.delete(API_URL + "/" + userItemId, config);
   console.log("Response date delete user item:");
   console.log(response.data);
-  return response.data;
+  //return response.data;
+  return { id: userItemId };
 };
 
 const userItemsService = {
