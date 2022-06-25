@@ -24,8 +24,8 @@ export default function Dashboard() {
     setCurrUserId(userItemId);
     console.log("clicking delete button");
     document.getElementById("backdrop").style.display = "block";
-    document.getElementById("myModal").style.display = "block";
-    document.getElementById("myModal").classList.add("show");
+    document.getElementById("deleteModal").style.display = "block";
+    document.getElementById("deleteModal").classList.add("show");
   };
   const deleteConfirmed = (id) => {
     console.log("delete confirmeed");
@@ -51,7 +51,11 @@ export default function Dashboard() {
 
   return (
     <>
-      <h1>Dashboard</h1>
+      <div className="d-flex justify-content-between">
+        <h1>Dashboard</h1>
+        <button className="btn btn-primary h2">Add User</button>
+      </div>
+
       <hr className="my-4"></hr>
       {isLoading ? (
         <div className="spinner-border text-primary" role="status">
@@ -86,6 +90,11 @@ export default function Dashboard() {
           />
         </>
       )}
+      <div
+        className="modal-backdrop fade show"
+        id="backdrop"
+        style={{ display: "none" }}
+      ></div>
     </>
   );
 }

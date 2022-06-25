@@ -1,16 +1,10 @@
-import { useDispatch } from "react-redux";
-import { deleteUserItem } from "../features/useritems/userItemsSlice";
-
 export default function UserItem({ userItem, showDeleteConfirmation }) {
-  const dispatch = useDispatch();
-
   const deleteUserItem = () => {
     console.log("clicking delete button");
     document.getElementById("backdrop").style.display = "block";
-    document.getElementById("myModal").style.display = "block";
-    document.getElementById("myModal").classList.add("show");
+    document.getElementById("deleteModal").style.display = "block";
+    document.getElementById("deleteModal").classList.add("show");
     showDeleteConfirmation(userItem.id);
-    //dispatch(deleteUserItem(userItem.id));
   };
 
   return (
