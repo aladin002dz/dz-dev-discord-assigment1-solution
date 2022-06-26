@@ -8,6 +8,7 @@ import {
 } from "../features/useritems/userItemsSlice";
 
 import UserItem from "../components/UserItem";
+import AddUserForm from "../components/AddUserForm";
 import DeleteConfirmation from "../components/DeleteConfirmation";
 
 export default function Dashboard() {
@@ -19,6 +20,12 @@ export default function Dashboard() {
   const { userItems, isLoading, isError, message } = useSelector(
     (state) => state.userItems
   );
+
+  const openAddUserForm = () => {
+    document.getElementById("backdrop").style.display = "block";
+    document.getElementById("addUserModal").style.display = "block";
+    document.getElementById("addUserModal").classList.add("show");
+  };
 
   const showDeleteConfirmation = (userItemId) => {
     setCurrUserId(userItemId);
@@ -53,7 +60,9 @@ export default function Dashboard() {
     <>
       <div className="d-flex justify-content-between">
         <h1>Dashboard</h1>
-        <button className="btn btn-primary h2">Add User</button>
+        <button className="btn btn-primary h2" onClick={openAddUserForm}>
+          Add User
+        </button>
       </div>
 
       <hr className="my-4"></hr>
@@ -84,6 +93,7 @@ export default function Dashboard() {
               ))}
             </tbody>
           </table>
+          <AddUserForm />
           <DeleteConfirmation
             runDelete={deleteConfirmed}
             currUserId={currUserId}
